@@ -41,6 +41,12 @@ namespace Renci.SshNet.Channels
                    remoteWindowSize,
                    remotePacketSize)
         {
+            base.EndOfData += ChannelForwardedTcpip_EndOfData;
+        }
+
+        private void ChannelForwardedTcpip_EndOfData(object sender, ChannelEventArgs e)
+        {
+            Close();
         }
 
         /// <summary>
